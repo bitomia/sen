@@ -13,6 +13,9 @@ set(gen_tests
     plantuml_fixture_test.h
     plantuml_stl_generator_test.cpp
     plantuml_fom_generator_test.cpp
+    mkdocs_fixture_test.h
+    mkdocs_stl_generator_test.cpp
+    mkdocs_fom_generator_test.cpp
     every_kind_model.h
 )
 

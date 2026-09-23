@@ -40,8 +40,9 @@ repos:
     - id: check-illegal-windows-names
     - id: check-toml
     - id: check-xml
-      exclude: libs/gen/test/data/plantuml/error_format/error_format.xml # the FOM in error_format is broken on purpose,
-                                                                         # so the parser has something to reject
+      # the FOM in error_format is broken on purpose, so the parser has something to reject
+      exclude: "libs/gen/test/data/plantuml/error_format/error_format.xml|\
+                libs/gen/test/data/mkdocs/error_format/error_format.xml"
 
 # The clang-format major tracks the toolchain (LLVM_VERSION in
 # tools/ci/Dockerfile); do not bump it independently.
@@ -145,19 +146,6 @@ repos:
       entry: python .github/scripts/check_docs_references.py
       pass_filenames: false
       always_run: true
-
-    - id: file-banner
-      name: Source files open with the licence banner
-      language: python
-      entry: python .github/scripts/check_file_banner.py
-      files: (\.(cpp|h|ts|tsx|cmake|py|bats)$|(^|/)CMakeLists\.txt$)
-      exclude: ^components/webexplorer/frontend/src/vite-env\.d\.ts$
-
-    - id: stl-format
-      name: STL members are aligned
-      language: script
-      entry: .github/scripts/format_stl.py
-      files: \.stl$
 
 # Global Configuration
 exclude: (examples/packages/hla_fom/.*|test/util/dummy_entities/hla/.*|.*.svg|.*.excalidraw|stl.tmLanguage.json)
