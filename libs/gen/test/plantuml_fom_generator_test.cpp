@@ -12,7 +12,7 @@
 /// Check sen gen uml generates a correct PlantUML from a minimal FOM file
 TEST_F(APlantUMLGenerator, FomEmpty)
 {
-  const std::vector<std::filesystem::path> paths {archivePath() / "plantuml" / "empty"};
+  const std::vector<std::filesystem::path> paths {dataDirectoryPath() / "plantuml" / "empty"};
   ASSERT_TRUE(std::filesystem::exists(paths.front())) << paths.front();
 
   generateFom(paths);
@@ -36,7 +36,7 @@ TEST_F(APlantUMLGenerator, FomEmpty)
 /// Check sen gen uml does not generate a PlantUML from an invalid FOM file
 TEST_F(APlantUMLGenerator, FomErrorFormat)
 {
-  const std::vector<std::filesystem::path> paths {archivePath() / "plantuml" / "error_format"};
+  const std::vector<std::filesystem::path> paths {dataDirectoryPath() / "plantuml" / "error_format"};
   ASSERT_TRUE(std::filesystem::exists(paths.front())) << paths.front();
 
   ASSERT_ANY_THROW(generateFom(paths));
@@ -46,7 +46,7 @@ TEST_F(APlantUMLGenerator, FomErrorFormat)
 /// Check sen gen uml generates a correct PlantUML from FOM file with empty class definition
 TEST_F(APlantUMLGenerator, FomEmptyClass)
 {
-  const std::vector<std::filesystem::path> paths {archivePath() / "plantuml" / "empty_class"};
+  const std::vector<std::filesystem::path> paths {dataDirectoryPath() / "plantuml" / "empty_class"};
   ASSERT_TRUE(std::filesystem::exists(paths.front())) << paths.front();
 
   generateFom(paths);
@@ -79,7 +79,7 @@ TEST_F(APlantUMLGenerator, FomEmptyClass)
 /// Check sen gen uml generates a correct PlantUML from FOM file with basic properties in the class
 TEST_F(APlantUMLGenerator, FomBasicProperties)
 {
-  const std::vector<std::filesystem::path> paths {archivePath() / "plantuml" / "basic_properties"};
+  const std::vector<std::filesystem::path> paths {dataDirectoryPath() / "plantuml" / "basic_properties"};
   ASSERT_TRUE(std::filesystem::exists(paths.front())) << paths.front();
 
   generateFom(paths);
@@ -115,7 +115,7 @@ TEST_F(APlantUMLGenerator, FomBasicProperties)
 /// Check sen gen uml generates a correct PlantUML from FOM file with a struct property in the class
 TEST_F(APlantUMLGenerator, FomStructProperty)
 {
-  const std::vector<std::filesystem::path> paths {archivePath() / "plantuml" / "struct_property"};
+  const std::vector<std::filesystem::path> paths {dataDirectoryPath() / "plantuml" / "struct_property"};
   ASSERT_TRUE(std::filesystem::exists(paths.front())) << paths.front();
 
   generateFom(paths);
@@ -163,7 +163,7 @@ TEST_F(APlantUMLGenerator, FomStructProperty)
 /// Check sen gen uml generates a correct PlantUML from FOM file with an enum property in the class
 TEST_F(APlantUMLGenerator, FomEnumProperty)
 {
-  const std::vector<std::filesystem::path> paths {archivePath() / "plantuml" / "enum_property"};
+  const std::vector<std::filesystem::path> paths {dataDirectoryPath() / "plantuml" / "enum_property"};
   ASSERT_TRUE(std::filesystem::exists(paths.front())) << paths.front();
 
   generateFom(paths);
