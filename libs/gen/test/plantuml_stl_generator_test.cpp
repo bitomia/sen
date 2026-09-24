@@ -124,7 +124,7 @@ class MyDerivedTestClass : extends MyBaseTestClass
 /// Check sen gen uml generates a correct PlantUML from an empty STL file
 TEST_F(APlantUMLGenerator, StlEmpty)
 {
-  generateStl(empty);
+  ASSERT_NO_FATAL_FAILURE(generateStl(empty));
 
   const auto startPos = find("@startuml");
   ASSERT_NE(startPos, std::string::npos) << content();
@@ -140,7 +140,7 @@ TEST_F(APlantUMLGenerator, StlErrorFormat) { ASSERT_ANY_THROW(generateStl(errorF
 /// Check sen gen uml generates a correct PlantUML from STL file with empty class definition
 TEST_F(APlantUMLGenerator, StlEmptyClass)
 {
-  generateStl(emptyClass);
+  ASSERT_NO_FATAL_FAILURE(generateStl(emptyClass));
 
   const auto startPos = find("@startuml");
   ASSERT_NE(startPos, std::string::npos) << content();
@@ -158,7 +158,7 @@ TEST_F(APlantUMLGenerator, StlEmptyClass)
 /// Check sen gen uml generates a correct PlantUML from STL file with basic properties in the class
 TEST_F(APlantUMLGenerator, StlBasicProperties)
 {
-  generateStl(basicProperties);
+  ASSERT_NO_FATAL_FAILURE(generateStl(basicProperties));
 
   const auto startPos = find("@startuml");
   ASSERT_NE(startPos, std::string::npos) << content();
@@ -182,7 +182,7 @@ TEST_F(APlantUMLGenerator, StlBasicProperties)
 /// Check the generated PlantUML places a struct, its properties and a class that uses it
 TEST_F(APlantUMLGenerator, StlStructProperty)
 {
-  generateStl(structProperty);
+  ASSERT_NO_FATAL_FAILURE(generateStl(structProperty));
 
   const auto startPos = find("@startuml");
   ASSERT_NE(startPos, std::string::npos) << content();
@@ -212,7 +212,7 @@ TEST_F(APlantUMLGenerator, StlStructProperty)
 /// Check the generated PlantUML places an enumeration, its enumerators and a class that uses it
 TEST_F(APlantUMLGenerator, StlEnumProperty)
 {
-  generateStl(enumProperty);
+  ASSERT_NO_FATAL_FAILURE(generateStl(enumProperty));
 
   const auto startPos = find("@startuml");
   ASSERT_NE(startPos, std::string::npos) << content();
@@ -223,16 +223,10 @@ TEST_F(APlantUMLGenerator, StlEnumProperty)
   const auto enumPos = find("enum MyTestEnum", packagePos);
   ASSERT_NE(enumPos, std::string::npos) << content();
 
-  const auto value1EnumPos = find("first", enumPos);
-  ASSERT_NE(value1EnumPos, std::string::npos) << content();
+  const auto valuesEnumPos = find("first\n    second\n    third", enumPos);
+  ASSERT_NE(valuesEnumPos, std::string::npos) << content();
 
-  const auto value2EnumPos = find("second", value1EnumPos);
-  ASSERT_NE(value2EnumPos, std::string::npos) << content();
-
-  const auto value3EnumPos = find("third", value2EnumPos);
-  ASSERT_NE(value3EnumPos, std::string::npos) << content();
-
-  const auto classPos = find("class MyTestClass", value3EnumPos);
+  const auto classPos = find("class MyTestClass", valuesEnumPos);
   ASSERT_NE(classPos, std::string::npos) << content();
 
   const auto propClassPos = find("+ enum1 : MyTestEnum", classPos);
@@ -245,7 +239,7 @@ TEST_F(APlantUMLGenerator, StlEnumProperty)
 /// Check sen gen uml generates a correct PlantUML from STL file with a variant property in the class
 TEST_F(APlantUMLGenerator, StlVariantProperty)
 {
-  generateStl(variantProperty);
+  ASSERT_NO_FATAL_FAILURE(generateStl(variantProperty));
 
   const auto startPos = find("@startuml");
   ASSERT_NE(startPos, std::string::npos) << content();
@@ -279,7 +273,7 @@ TEST_F(APlantUMLGenerator, StlVariantProperty)
 /// types
 TEST_F(APlantUMLGenerator, StlNonGenerableProperties)
 {
-  generateStl(nonGenerableProperties);
+  ASSERT_NO_FATAL_FAILURE(generateStl(nonGenerableProperties));
 
   const auto startPos = find("@startuml");
   ASSERT_NE(startPos, std::string::npos) << content();
@@ -303,7 +297,7 @@ TEST_F(APlantUMLGenerator, StlNonGenerableProperties)
 /// Check sen gen uml generates a correct PlantUML from STL file with methods in the class
 TEST_F(APlantUMLGenerator, StlMethods)
 {
-  generateStl(methods);
+  ASSERT_NO_FATAL_FAILURE(generateStl(methods));
 
   const auto startPos = find("@startuml");
   ASSERT_NE(startPos, std::string::npos) << content();
@@ -333,7 +327,7 @@ TEST_F(APlantUMLGenerator, StlMethods)
 /// Check sen gen uml generates a correct PlantUML from STL file with events in the class
 TEST_F(APlantUMLGenerator, StlEvents)
 {
-  generateStl(events);
+  ASSERT_NO_FATAL_FAILURE(generateStl(events));
 
   const auto startPos = find("@startuml");
   ASSERT_NE(startPos, std::string::npos) << content();
@@ -366,7 +360,7 @@ TEST_F(APlantUMLGenerator, StlEvents)
 /// Check sen gen uml generates a correct PlantUML from STL file with inheritance
 TEST_F(APlantUMLGenerator, StlInheritance)
 {
-  generateStl(inheritance);
+  ASSERT_NO_FATAL_FAILURE(generateStl(inheritance));
 
   const auto startPos = find("@startuml");
   ASSERT_NE(startPos, std::string::npos) << content();
@@ -396,7 +390,7 @@ TEST_F(APlantUMLGenerator, StlInheritance)
 /// Check sen gen uml only generates PlantUML classes when the onlyClasses mode is used
 TEST_F(APlantUMLGenerator, StlOnlyClasses)
 {
-  generateStl(structProperty, sen::gen::PlantUMLGenerationMode::onlyClasses);
+  ASSERT_NO_FATAL_FAILURE(generateStl(structProperty, sen::gen::PlantUMLGenerationMode::onlyClasses));
 
   EXPECT_EQ(find("class MyTestStruct"), std::string::npos) << content();
   EXPECT_EQ(find("+ f32 x"), std::string::npos) << content();
@@ -421,7 +415,7 @@ TEST_F(APlantUMLGenerator, StlOnlyClasses)
 /// Check sen gen uml only generates PlantUML special types definition when the onlyBasicTypes mode is used
 TEST_F(APlantUMLGenerator, StlOnlyBasicTypes)
 {
-  generateStl(structProperty, sen::gen::PlantUMLGenerationMode::onlyBasicTypes);
+  ASSERT_NO_FATAL_FAILURE(generateStl(structProperty, sen::gen::PlantUMLGenerationMode::onlyBasicTypes));
 
   EXPECT_EQ(find("MyTestClass"), std::string::npos) << content();
   EXPECT_EQ(find("+ struct1 : MyTestStruct"), std::string::npos) << content();
@@ -448,7 +442,11 @@ TEST_F(APlantUMLGenerator, StlOnlyBasicTypes)
 /// Check sen gen uml does not generate PlantUML enums when the noEnumerators mode is used
 TEST_F(APlantUMLGenerator, StlNoEnumerators)
 {
-  generateStl(enumProperty, sen::gen::PlantUMLGenerationMode::all, sen::gen::PlantUMLEnumMode::noEnumerators);
+  ASSERT_NO_FATAL_FAILURE(
+    generateStl(enumProperty, sen::gen::PlantUMLGenerationMode::all, sen::gen::PlantUMLEnumMode::noEnumerators));
+
+  EXPECT_EQ(find("enum MyTestEnum"), std::string::npos) << content();
+  EXPECT_EQ(find("first\n    second\n    third"), std::string::npos) << content();
 
   const auto startPos = find("@startuml");
   ASSERT_NE(startPos, std::string::npos) << content();

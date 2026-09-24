@@ -9,7 +9,6 @@
 
 // 3rd party
 #include <gtest/gtest.h>
-#include <nlohmann/json.hpp>
 
 // std
 #include <cstddef>
@@ -50,7 +49,7 @@ protected:
 
   [[nodiscard]] std::string content() const { return content_; }
 
-  [[nodiscard]] std::filesystem::path archivePath() const { return TEST_DATA_DIR; }
+  [[nodiscard]] std::filesystem::path dataDirectoryPath() const { return TEST_DATA_DIR; }
 
 private:
   std::vector<sen::lang::StlStatement> statements_;
