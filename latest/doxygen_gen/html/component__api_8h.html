@@ -156,7 +156,9 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('component__api
 <code>#include &quot;stl/sen/kernel/basic_types.stl.h&quot;</code><br />
 <code>#include &quot;stl/sen/kernel/network_footprint.stl.h&quot;</code><br />
 <code>#include &lt;spdlog/logger.h&gt;</code><br />
+<code>#include &lt;spdlog/sinks/sink.h&gt;</code><br />
 <code>#include &lt;atomic&gt;</code><br />
+<code>#include &lt;cstddef&gt;</code><br />
 <code>#include &lt;cstdint&gt;</code><br />
 <code>#include &lt;cstring&gt;</code><br />
 <code>#include &lt;filesystem&gt;</code><br />
@@ -173,6 +175,8 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('component__api
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:sen_3A_3Akernel_3A_3ALoggerSinkRegistration_5Fstructsen_5F1_5F1kernel_5F1_5F1_5Flogger_5Fsink_5Fregistration" id="r_sen_3A_3Akernel_3A_3ALoggerSinkRegistration_5Fstructsen_5F1_5F1kernel_5F1_5F1_5Flogger_5Fsink_5Fregistration"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="namespacesen_1_1kernel.html#structsen_1_1kernel_1_1_logger_sink_registration">sen::kernel::LoggerSinkRegistration</a></td></tr>
+<tr class="memdesc:structsen_1_1kernel_1_1_logger_sink_registration"><td class="mdescLeft">&#160;</td><td class="mdescRight">What registering a logger sink did.  <a href="namespacesen_1_1kernel.html#structsen_1_1kernel_1_1_logger_sink_registration">More...</a><br /></td></tr>
 <tr class="memitem:sen_3A_3Akernel_3A_3AComponentMonitoringInfo_5Fstructsen_5F1_5F1kernel_5F1_5F1_5Fcomponent_5Fmonitoring_5Finfo" id="r_sen_3A_3Akernel_3A_3AComponentMonitoringInfo_5Fstructsen_5F1_5F1kernel_5F1_5F1_5Fcomponent_5Fmonitoring_5Finfo"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="namespacesen_1_1kernel.html#structsen_1_1kernel_1_1_component_monitoring_info">sen::kernel::ComponentMonitoringInfo</a></td></tr>
 <tr class="memdesc:structsen_1_1kernel_1_1_component_monitoring_info"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runtime monitoring information about a single component runner.  <a href="namespacesen_1_1kernel.html#structsen_1_1kernel_1_1_component_monitoring_info">More...</a><br /></td></tr>
 <tr class="memitem:sen_3A_3Akernel_3A_3AKernelMonitoringInfo_5Fstructsen_5F1_5F1kernel_5F1_5F1_5Fkernel_5Fmonitoring_5Finfo" id="r_sen_3A_3Akernel_3A_3AKernelMonitoringInfo_5Fstructsen_5F1_5F1kernel_5F1_5F1_5Fkernel_5Fmonitoring_5Finfo"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="namespacesen_1_1kernel.html#structsen_1_1kernel_1_1_kernel_monitoring_info">sen::kernel::KernelMonitoringInfo</a></td></tr>
@@ -208,8 +212,58 @@ Typedefs</h2></td></tr>
 <tr class="memdesc:a407b640414b54bf6d98c670c7b86ad67"><td class="mdescLeft">&#160;</td><td class="mdescRight">The result of operations that may be called multiple times.  <br /></td></tr>
 <tr class="memitem:aa49f73d5a95b7d2b2e638f45b4761e86" id="r_aa49f73d5a95b7d2b2e638f45b4761e86"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="namespacesen_1_1kernel.html#aa49f73d5a95b7d2b2e638f45b4761e86">sen::kernel::NetworkFootprintReporter</a> = NetworkFootprint(<a class="el" href="classsen_1_1_span.html">Span</a>&lt;const BusAddress&gt;) const</td></tr>
 <tr class="memdesc:aa49f73d5a95b7d2b2e638f45b4761e86"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classsen_1_1_callable.html" title="Represents something that can be called.">Callable</a> that builds a network footprint from bus addresses.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a33d8256061fa289ca51043f36103a87d" id="r_a33d8256061fa289ca51043f36103a87d"><td class="memItemLeft">enum class &#160;</td><td class="memItemRight"><a class="el" href="namespacesen_1_1kernel.html#a33d8256061fa289ca51043f36103a87d">sen::kernel::TerminalOwnership</a> { <a class="el" href="namespacesen_1_1kernel.html#a33d8256061fa289ca51043f36103a87da9e81e7b963c71363e2fb3eefcfecfc0e">sen::kernel::shared</a>
+, <a class="el" href="namespacesen_1_1kernel.html#a33d8256061fa289ca51043f36103a87da8f9a4c5fe0824547590a3fc568f5c7c7">sen::kernel::owned</a>
+ }</td></tr>
+<tr class="memdesc:a33d8256061fa289ca51043f36103a87d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether the component registering a log sink owns the terminal.  <a href="namespacesen_1_1kernel.html#a33d8256061fa289ca51043f36103a87d">More...</a><br /></td></tr>
 </table>
 <hr/><h2 id="header-inline_5Fclasses" class="groupheader">Class Documentation</h2>
+<a name="structsen_1_1kernel_1_1_logger_sink_registration" id="structsen_1_1kernel_1_1_logger_sink_registration"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#structsen_1_1kernel_1_1_logger_sink_registration">&#9670;&#160;</a></span>sen::kernel::LoggerSinkRegistration</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct sen::kernel::LoggerSinkRegistration</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="textblock"><p>What registering a logger sink did. </p>
+<p>There is no arbitration: a sink is added, never refused, so two components that both render logs will each be handed every line, including the other's. Anything that needs exclusivity has to read <span class="tt"><a class="el" href="namespacesen_1_1kernel.html#a0f7f75542818324beaa9159dacfaeeea" title="sinks registered behind the relay, this one included">registeredSinks</a></span> and decide for itself. </p>
+</div><table class="fieldtable">
+<tr><th colspan="3">Class Members</th></tr>
+<tr><td class="fieldtype">
+<a id="ae4494904bf536e578af6b7d0c066e034" name="ae4494904bf536e578af6b7d0c066e034"></a>bool</td>
+<td class="fieldname">
+added = false</td>
+<td class="fielddoc">
+false when this sink was already registered, so the call only changed its terminal ownership </td></tr>
+<tr><td class="fieldtype">
+<a id="a62a3f0f37751c965d4569c18455a8d03" name="a62a3f0f37751c965d4569c18455a8d03"></a>bool</td>
+<td class="fieldname">
+ownsTerminal = false</td>
+<td class="fielddoc">
+whether this sink now holds the terminal claim </td></tr>
+<tr><td class="fieldtype">
+<a id="a02a6dab98bcf9a8d57557545b1ec4920" name="a02a6dab98bcf9a8d57557545b1ec4920"></a>bool</td>
+<td class="fieldname">
+terminalOwnedElsewhere = false</td>
+<td class="fielddoc">
+whether a <em>different</em> registered sink holds the claim </td></tr>
+<tr><td class="fieldtype">
+<a id="a0f7f75542818324beaa9159dacfaeeea" name="a0f7f75542818324beaa9159dacfaeeea"></a>size_t</td>
+<td class="fieldname">
+registeredSinks = 0</td>
+<td class="fielddoc">
+sinks registered behind the relay, this one included </td></tr>
+</table>
+
+</div>
+</div>
 <a name="structsen_1_1kernel_1_1_component_monitoring_info" id="structsen_1_1kernel_1_1_component_monitoring_info"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#structsen_1_1kernel_1_1_component_monitoring_info">&#9670;&#160;</a></span>sen::kernel::ComponentMonitoringInfo</h2>
 
@@ -254,6 +308,66 @@ cycleTime</td>
 objectCount = 0</td>
 <td class="fielddoc">
 </td></tr>
+<tr><td class="fieldtype">
+<a id="a07fb2b62f8d6209d5c5ac0a83d35b90c" name="a07fb2b62f8d6209d5c5ac0a83d35b90c"></a>optional&lt; <a class="el" href="classsen_1_1_duration.html">Duration</a> &gt;</td>
+<td class="fieldname">
+lastCycleExecutionCpuTime</td>
+<td class="fielddoc">
+Thread CPU time, user and system, consumed by the last completed execution cycle. On Windows every CPU time here is quantised to the system clock tick, 15.6 ms by default, so for a shorter period than that these figures say very little. </td></tr>
+<tr><td class="fieldtype">
+<a id="a724b54c9a7ebdd5868cfeb696a913612" name="a724b54c9a7ebdd5868cfeb696a913612"></a>optional&lt; <a class="el" href="classsen_1_1_duration.html">Duration</a> &gt;</td>
+<td class="fieldname">
+lastCycleComponentCpuTime</td>
+<td class="fielddoc">
+The part of that spent in the component's own code: its objects' update() and its work function. Its preDrain() and preCommit(), its commit-time event handlers and its discovery callbacks run outside this and are counted with Sen's. </td></tr>
+<tr><td class="fieldtype">
+<a id="a200624c611103898ba600c3fd1a55784" name="a200624c611103898ba600c3fd1a55784"></a>optional&lt; <a class="el" href="classsen_1_1_duration.html">Duration</a> &gt;</td>
+<td class="fieldname">
+lastCycleQueuedWorkCpuTime</td>
+<td class="fielddoc">
+The part of that spent on work queued on the component: the callbacks it registered, and serving the calls other components make on its objects. Serving a call is partly the component's method and partly Sen's transport, so it is reported on its own. </td></tr>
+<tr><td class="fieldtype">
+<a id="abc86b8df3f06f125fe74ef1051ff8c2b" name="abc86b8df3f06f125fe74ef1051ff8c2b"></a>optional&lt; <a class="el" href="classsen_1_1_duration.html">Duration</a> &gt;</td>
+<td class="fieldname">
+worstCycleExecutionCpuTime</td>
+<td class="fielddoc">
+The most CPU time any one cycle has used since the component started running, leaving out its first cycle, which carries the startup. A component that runs long once in a thousand cycles rarely has it in the last one. </td></tr>
+<tr><td class="fieldtype">
+<a id="a77f77968bca053d745cbf336a6062413" name="a77f77968bca053d745cbf336a6062413"></a>optional&lt; <a class="el" href="classsen_1_1_duration.html">Duration</a> &gt;</td>
+<td class="fieldname">
+worstCycleComponentCpuTime</td>
+<td class="fielddoc">
+The component's share of that same worst cycle, so the two can be compared. </td></tr>
+<tr><td class="fieldtype">
+<a id="a1bfe91bc7d6e857f051cd61692126a40" name="a1bfe91bc7d6e857f051cd61692126a40"></a>optional&lt; <a class="el" href="classsen_1_1_duration.html">Duration</a> &gt;</td>
+<td class="fieldname">
+lastCycleStartDelay</td>
+<td class="fielddoc">
+How late the thread woke for the cycle it was waiting for. The scheduler's contribution, kept apart from the component's. Negative if it woke early. Empty for the first cycle, and unless the component runs on the kernel's real-time loop. </td></tr>
+<tr><td class="fieldtype">
+<a id="a44d5cd94901b2f1cb240d380ce24ab96" name="a44d5cd94901b2f1cb240d380ce24ab96"></a>optional&lt; <a class="el" href="classsen_1_1_duration.html">Duration</a> &gt;</td>
+<td class="fieldname">
+worstStartDelay</td>
+<td class="fielddoc">
+The latest the thread has ever woken. A machine that is late once in a thousand cycles rarely has it in lastCycleStartDelay. </td></tr>
+<tr><td class="fieldtype">
+<a id="a53469c27af684bdafd039ee2273c2df9" name="a53469c27af684bdafd039ee2273c2df9"></a>optional&lt; uint64_t &gt;</td>
+<td class="fieldname">
+overrunCount</td>
+<td class="fielddoc">
+Cycles whose execution used more CPU time than the period. A cycle that blocked rather than computed does not appear here, it appears in missedFrameCount. A cycle that overruns also finishes past its slot, so missedFrameCount rises with it. Empty unless the component runs on the kernel's real-time loop. </td></tr>
+<tr><td class="fieldtype">
+<a id="a9caffe2e8af0440f0b8ff513991be969" name="a9caffe2e8af0440f0b8ff513991be969"></a>optional&lt; uint64_t &gt;</td>
+<td class="fieldname">
+missedFrameCount</td>
+<td class="fielddoc">
+Cycles lost because the work finished after the cycle it belonged to. Every lost cycle is counted, not the run of them. Wall time, so blocking counts, and so does a clock correction that moves the schedule forward. The first cycle is not counted: the schedule starts before the component has finished its own startup. Empty unless the component runs on the kernel's real-time loop. </td></tr>
+<tr><td class="fieldtype">
+<a id="a6c7ef6a6bf621218c8ffb94f72ae0694" name="a6c7ef6a6bf621218c8ffb94f72ae0694"></a>optional&lt; uint64_t &gt;</td>
+<td class="fieldname">
+oversleptCount</td>
+<td class="fielddoc">
+Cycles lost because the sleep returned late, so the component was not running when it should have been. Every lost cycle is counted, not the run of them. A wake-up late by less than a period loses no cycle here and shows up in missedFrameCount, so read lastCycleStartDelay before blaming the component. Empty unless it runs on the kernel's real-time loop. </td></tr>
 </table>
 
 </div>
