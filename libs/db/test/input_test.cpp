@@ -639,14 +639,13 @@ TEST(InputTest, Summary)
   Input input(archivePath.string(), kernel.getTypes());
   const auto& summary = input.getSummary();
 
-  EXPECT_TRUE(summary.firstTime <= summary.lastTime);
+  EXPECT_EQ(summary.firstTime, TimeStamp(1000000000));
+  EXPECT_EQ(summary.lastTime, TimeStamp(4000000000));
   EXPECT_EQ(summary.keyframeCount, 4U);
   EXPECT_EQ(summary.objectCount, 1U);
   EXPECT_EQ(summary.typeCount, 0U);
   EXPECT_EQ(summary.annotationCount, 1U);
   EXPECT_EQ(summary.indexedObjectCount, 1U);
-
-  EXPECT_TRUE(true);
 }
 
 }  // namespace sen::db::test
