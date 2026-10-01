@@ -59,10 +59,7 @@ protected:
     return content_.find(phrase, from);
   }
 
-  [[nodiscard]] bool areAllTemplatesFilled() const
-  {
-    return !std::regex_search(content_, std::regex(R"(<<.+>>)"));
-  }
+  [[nodiscard]] bool areAllTemplatesFilled() const { return !std::regex_search(content_, std::regex(R"(<<.+>>)")); }
 
   [[nodiscard]] std::string section(const std::string& heading) const
   {

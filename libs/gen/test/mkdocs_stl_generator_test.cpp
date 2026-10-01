@@ -264,7 +264,9 @@ TEST_F(AMkdocsGenerator, StlEmptyClass)
   ASSERT_TRUE(generateStl(emptyClass));
   ASSERT_FALSE(content().empty()) << "mkdocs file is empty";
   ASSERT_TRUE(areAllTemplatesFilled()) << "a substitution site was left unfilled\n" << content();
-  EXPECT_NE(section("### Type Map").find("[my_test_package.MyTestClass](#my_test_packagemytestclass)"), std::string::npos) << content();
+  EXPECT_NE(section("### Type Map").find("[my_test_package.MyTestClass](#my_test_packagemytestclass)"),
+            std::string::npos)
+    << content();
 }
 
 /// @test
@@ -274,7 +276,9 @@ TEST_F(AMkdocsGenerator, StlBasicProperties)
   ASSERT_TRUE(generateStl(basicProperties));
   ASSERT_FALSE(content().empty()) << "mkdocs file is empty";
   ASSERT_TRUE(areAllTemplatesFilled()) << "a substitution site was left unfilled\n" << content();
-  EXPECT_NE(section("### Type Map").find("[my_test_package.MyTestClass](#my_test_packagemytestclass)"), std::string::npos) << content();
+  EXPECT_NE(section("### Type Map").find("[my_test_package.MyTestClass](#my_test_packagemytestclass)"),
+            std::string::npos)
+    << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("**Properties**"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("**prop1**"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("[string](#string)"), std::string::npos) << content();
@@ -289,12 +293,19 @@ TEST_F(AMkdocsGenerator, StlStructProperty)
   ASSERT_TRUE(generateStl(structProperty));
   ASSERT_FALSE(content().empty()) << "mkdocs file is empty";
   ASSERT_TRUE(areAllTemplatesFilled()) << "a substitution site was left unfilled\n" << content();
-  EXPECT_NE(section("### Type Map").find("[my_test_package.MyTestClass](#my_test_packagemytestclass)"), std::string::npos) << content();
-  EXPECT_NE(section("### Type Map").find("[MyTestStruct](#my_test_packagemyteststruct)"), std::string::npos) << content();
+  EXPECT_NE(section("### Type Map").find("[my_test_package.MyTestClass](#my_test_packagemytestclass)"),
+            std::string::npos)
+    << content();
+  EXPECT_NE(section("### Type Map").find("[MyTestStruct](#my_test_packagemyteststruct)"), std::string::npos)
+    << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("**Properties**"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("**struct1**"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestClass").find("[my_test_package.MyTestStruct](#my_test_packagemyteststruct)"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestStruct").find("\n\n| Field     | Description |"), std::string::npos) << content();
+  EXPECT_NE(
+    section("### my_test_package.MyTestClass").find("[my_test_package.MyTestStruct](#my_test_packagemyteststruct)"),
+    std::string::npos)
+    << content();
+  EXPECT_NE(section("### my_test_package.MyTestStruct").find("\n\n| Field     | Description |"), std::string::npos)
+    << content();
   EXPECT_NE(section("### my_test_package.MyTestStruct").find("**x** | [f32](#f32)"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestStruct").find("**y** | [f64](#f64)"), std::string::npos) << content();
 }
@@ -306,12 +317,17 @@ TEST_F(AMkdocsGenerator, StlEnumProperty)
   ASSERT_TRUE(generateStl(enumProperty));
   ASSERT_FALSE(content().empty()) << "mkdocs file is empty";
   ASSERT_TRUE(areAllTemplatesFilled()) << "a substitution site was left unfilled\n" << content();
-  EXPECT_NE(section("### Type Map").find("[my_test_package.MyTestClass](#my_test_packagemytestclass)"), std::string::npos) << content();
+  EXPECT_NE(section("### Type Map").find("[my_test_package.MyTestClass](#my_test_packagemytestclass)"),
+            std::string::npos)
+    << content();
   EXPECT_NE(section("### Type Map").find("[MyTestEnum](#my_test_packagemytestenum)"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("**Properties**"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("**enum1**"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestClass").find("[my_test_package.MyTestEnum](#my_test_packagemytestenum)"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestEnum").find("\nRepresentation: [u8](#u8)"), std::string::npos) << content();
+  EXPECT_NE(section("### my_test_package.MyTestClass").find("[my_test_package.MyTestEnum](#my_test_packagemytestenum)"),
+            std::string::npos)
+    << content();
+  EXPECT_NE(section("### my_test_package.MyTestEnum").find("\nRepresentation: [u8](#u8)"), std::string::npos)
+    << content();
   EXPECT_NE(section("### my_test_package.MyTestEnum").find("first | 0 "), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestEnum").find("second | 1 "), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestEnum").find("third | 2 "), std::string::npos) << content();
@@ -324,11 +340,17 @@ TEST_F(AMkdocsGenerator, StlVariantProperty)
   ASSERT_TRUE(generateStl(variantProperty));
   ASSERT_FALSE(content().empty()) << "mkdocs file is empty";
   ASSERT_TRUE(areAllTemplatesFilled()) << "a substitution site was left unfilled\n" << content();
-  EXPECT_NE(section("### Type Map").find("[my_test_package.MyTestClass](#my_test_packagemytestclass)"), std::string::npos) << content();
-  EXPECT_NE(section("### Type Map").find("[MyTestVariant](#my_test_packagemytestvariant)"), std::string::npos) << content();
+  EXPECT_NE(section("### Type Map").find("[my_test_package.MyTestClass](#my_test_packagemytestclass)"),
+            std::string::npos)
+    << content();
+  EXPECT_NE(section("### Type Map").find("[MyTestVariant](#my_test_packagemytestvariant)"), std::string::npos)
+    << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("**Properties**"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("**variant1**"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestClass").find("[my_test_package.MyTestVariant](#my_test_packagemytestvariant)"), std::string::npos) << content();
+  EXPECT_NE(
+    section("### my_test_package.MyTestClass").find("[my_test_package.MyTestVariant](#my_test_packagemytestvariant)"),
+    std::string::npos)
+    << content();
   EXPECT_NE(section("### my_test_package.MyTestVariant").find("\n\n| Type |"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestVariant").find("[i32](#i32)"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestVariant").find("[bool](#bool)"), std::string::npos) << content();
@@ -342,21 +364,38 @@ TEST_F(AMkdocsGenerator, StlSequenceProperty)
   ASSERT_TRUE(generateStl(sequenceProperty));
   ASSERT_FALSE(content().empty()) << "mkdocs file is empty";
   ASSERT_TRUE(areAllTemplatesFilled()) << "a substitution site was left unfilled\n" << content();
-  EXPECT_NE(section("### Type Map").find("[my_test_package.MyTestClass](#my_test_packagemytestclass)"), std::string::npos) << content();
-  EXPECT_NE(section("### Type Map").find("[MyTestBoundedSequence](#my_test_packagemytestboundedsequence)"), std::string::npos) << content();
-  EXPECT_NE(section("### Type Map").find("[MyTestUnboundedSequence](#my_test_packagemytestunboundedsequence)"), std::string::npos) << content();
+  EXPECT_NE(section("### Type Map").find("[my_test_package.MyTestClass](#my_test_packagemytestclass)"),
+            std::string::npos)
+    << content();
+  EXPECT_NE(section("### Type Map").find("[MyTestBoundedSequence](#my_test_packagemytestboundedsequence)"),
+            std::string::npos)
+    << content();
+  EXPECT_NE(section("### Type Map").find("[MyTestUnboundedSequence](#my_test_packagemytestunboundedsequence)"),
+            std::string::npos)
+    << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("**Properties**"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("**sequence1**"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestClass").find("[my_test_package.MyTestBoundedSequence](#my_test_packagemytestboundedsequence)"), std::string::npos) << content();
+  EXPECT_NE(section("### my_test_package.MyTestClass")
+              .find("[my_test_package.MyTestBoundedSequence](#my_test_packagemytestboundedsequence)"),
+            std::string::npos)
+    << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("**sequence2**"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestClass").find("[my_test_package.MyTestUnboundedSequence](#my_test_packagemytestunboundedsequence)"), std::string::npos) << content();
+  EXPECT_NE(section("### my_test_package.MyTestClass")
+              .find("[my_test_package.MyTestUnboundedSequence](#my_test_packagemytestunboundedsequence)"),
+            std::string::npos)
+    << content();
   EXPECT_NE(section("### my_test_package.MyTestBoundedSequence").find("\n\n|  |  |"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestBoundedSequence").find("Element Type | [i64](#i64)"), std::string::npos) << content();
+  EXPECT_NE(section("### my_test_package.MyTestBoundedSequence").find("Element Type | [i64](#i64)"), std::string::npos)
+    << content();
   EXPECT_NE(section("### my_test_package.MyTestBoundedSequence").find("Bounded | Yes"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestBoundedSequence").find("Max size | 100"), std::string::npos) << content();
+  EXPECT_NE(section("### my_test_package.MyTestBoundedSequence").find("Max size | 100"), std::string::npos)
+    << content();
   EXPECT_NE(section("### my_test_package.MyTestUnboundedSequence").find("\n\n|  |  |"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestUnboundedSequence").find("Element Type | [i32](#i32)"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestUnboundedSequence").find("Bounded | No"), std::string::npos) << content();
+  EXPECT_NE(section("### my_test_package.MyTestUnboundedSequence").find("Element Type | [i32](#i32)"),
+            std::string::npos)
+    << content();
+  EXPECT_NE(section("### my_test_package.MyTestUnboundedSequence").find("Bounded | No"), std::string::npos)
+    << content();
 }
 
 /// @test
@@ -366,12 +405,20 @@ TEST_F(AMkdocsGenerator, StlAliasProperty)
   ASSERT_TRUE(generateStl(aliasProperty));
   ASSERT_FALSE(content().empty()) << "mkdocs file is empty";
   ASSERT_TRUE(areAllTemplatesFilled()) << "a substitution site was left unfilled\n" << content();
-  EXPECT_NE(section("### Type Map").find("[my_test_package.MyTestClass](#my_test_packagemytestclass)"), std::string::npos) << content();
-  EXPECT_NE(section("### Type Map").find("[my_test_package.MyTestClass](#my_test_packagemytestclass)"), std::string::npos) << content();
+  EXPECT_NE(section("### Type Map").find("[my_test_package.MyTestClass](#my_test_packagemytestclass)"),
+            std::string::npos)
+    << content();
+  EXPECT_NE(section("### Type Map").find("[my_test_package.MyTestClass](#my_test_packagemytestclass)"),
+            std::string::npos)
+    << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("**Properties**"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("**alias1**"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestClass").find("[my_test_package.MyTestAlias](#my_test_packagemytestalias)"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestAlias").find("Aliased Type: [i64](#i64)"), std::string::npos) << content();
+  EXPECT_NE(
+    section("### my_test_package.MyTestClass").find("[my_test_package.MyTestAlias](#my_test_packagemytestalias)"),
+    std::string::npos)
+    << content();
+  EXPECT_NE(section("### my_test_package.MyTestAlias").find("Aliased Type: [i64](#i64)"), std::string::npos)
+    << content();
 }
 
 /// @test
@@ -381,11 +428,17 @@ TEST_F(AMkdocsGenerator, StlOptionalProperty)
   ASSERT_TRUE(generateStl(optionalProperty));
   ASSERT_FALSE(content().empty()) << "mkdocs file is empty";
   ASSERT_TRUE(areAllTemplatesFilled()) << "a substitution site was left unfilled\n" << content();
-  EXPECT_NE(section("### Type Map").find("[my_test_package.MyTestClass](#my_test_packagemytestclass)"), std::string::npos) << content();
+  EXPECT_NE(section("### Type Map").find("[my_test_package.MyTestClass](#my_test_packagemytestclass)"),
+            std::string::npos)
+    << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("**Properties**"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("**optional1**"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestClass").find("[my_test_package.MyTestOptional](#my_test_packagemytestoptional)"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestOptional").find("Optional Type: [f32](#f32)"), std::string::npos) << content();
+  EXPECT_NE(
+    section("### my_test_package.MyTestClass").find("[my_test_package.MyTestOptional](#my_test_packagemytestoptional)"),
+    std::string::npos)
+    << content();
+  EXPECT_NE(section("### my_test_package.MyTestOptional").find("Optional Type: [f32](#f32)"), std::string::npos)
+    << content();
 }
 
 /// @test
@@ -395,11 +448,17 @@ TEST_F(AMkdocsGenerator, StlQuantityProperty)
   ASSERT_TRUE(generateStl(quantityProperty));
   ASSERT_FALSE(content().empty()) << "mkdocs file is empty";
   ASSERT_TRUE(areAllTemplatesFilled()) << "a substitution site was left unfilled\n" << content();
-  EXPECT_NE(section("### Type Map").find("[my_test_package.MyTestClass](#my_test_packagemytestclass)"), std::string::npos) << content();
-  EXPECT_NE(section("### Type Map").find("[MyTestQuantity](#my_test_packagemytestquantity)"), std::string::npos) << content();
+  EXPECT_NE(section("### Type Map").find("[my_test_package.MyTestClass](#my_test_packagemytestclass)"),
+            std::string::npos)
+    << content();
+  EXPECT_NE(section("### Type Map").find("[MyTestQuantity](#my_test_packagemytestquantity)"), std::string::npos)
+    << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("**Properties**"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("**quantity1**"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestClass").find("[my_test_package.MyTestQuantity](#my_test_packagemytestquantity)"), std::string::npos) << content();
+  EXPECT_NE(
+    section("### my_test_package.MyTestClass").find("[my_test_package.MyTestQuantity](#my_test_packagemytestquantity)"),
+    std::string::npos)
+    << content();
   EXPECT_NE(section("### my_test_package.MyTestQuantity").find("Representation: f32"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestQuantity").find("Unit:  m"), std::string::npos) << content();
 }
@@ -411,7 +470,9 @@ TEST_F(AMkdocsGenerator, StlMethods)
   ASSERT_TRUE(generateStl(methods));
   ASSERT_FALSE(content().empty()) << "mkdocs file is empty";
   ASSERT_TRUE(areAllTemplatesFilled()) << "a substitution site was left unfilled\n" << content();
-  EXPECT_NE(section("### Type Map").find("[my_test_package.MyTestClass](#my_test_packagemytestclass)"), std::string::npos) << content();
+  EXPECT_NE(section("### Type Map").find("[my_test_package.MyTestClass](#my_test_packagemytestclass)"),
+            std::string::npos)
+    << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("**Properties**"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("**result**"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("[i32](#i32)"), std::string::npos) << content();
@@ -419,13 +480,17 @@ TEST_F(AMkdocsGenerator, StlMethods)
   EXPECT_NE(section("### my_test_package.MyTestClass").find("**addNumbers**"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("[i32](#i32)"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("Returns: [i32](#i32)"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestClass").find("\n\n    | Argument  | Type | Description |"), std::string::npos) << content();
+  EXPECT_NE(section("### my_test_package.MyTestClass").find("\n\n    | Argument  | Type | Description |"),
+            std::string::npos)
+    << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("a | [i32](#i32)"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("b | [i32](#i32)"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("**subtractNumbers**"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("[i32](#i32)"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("Returns: [i32](#i32)"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestClass").find("\n\n    | Argument  | Type | Description |"), std::string::npos) << content();
+  EXPECT_NE(section("### my_test_package.MyTestClass").find("\n\n    | Argument  | Type | Description |"),
+            std::string::npos)
+    << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("x | [i32](#i32)"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("y | [i32](#i32)"), std::string::npos) << content();
 }
@@ -437,13 +502,17 @@ TEST_F(AMkdocsGenerator, StlEvents)
   ASSERT_TRUE(generateStl(events));
   ASSERT_FALSE(content().empty()) << "mkdocs file is empty";
   ASSERT_TRUE(areAllTemplatesFilled()) << "a substitution site was left unfilled\n" << content();
-  EXPECT_NE(section("### Type Map").find("[my_test_package.MyTestClass](#my_test_packagemytestclass)"), std::string::npos) << content();
+  EXPECT_NE(section("### Type Map").find("[my_test_package.MyTestClass](#my_test_packagemytestclass)"),
+            std::string::npos)
+    << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("**Properties**"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("**result**"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("[i32](#i32)"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("**Events**"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("**divisionByZero**"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestClass").find(":   Emitted when there's an attempt to divide by zero."), std::string::npos) << content();
+  EXPECT_NE(section("### my_test_package.MyTestClass").find(":   Emitted when there's an attempt to divide by zero."),
+            std::string::npos)
+    << content();
 }
 
 /// @test
@@ -453,17 +522,23 @@ TEST_F(AMkdocsGenerator, StlInheritance)
   ASSERT_TRUE(generateStl(inheritance));
   ASSERT_FALSE(content().empty()) << "mkdocs file is empty";
   ASSERT_TRUE(areAllTemplatesFilled()) << "a substitution site was left unfilled\n" << content();
-  EXPECT_NE(section("### Type Map").find("[my_test_package.MyBaseTestClass](#my_test_packagemybasetestclass)"), std::string::npos) << content();
-  EXPECT_NE(section("### Type Map").find("[my_test_package.MyDerivedTestClass](#my_test_packagemyderivedtestclass)"), std::string::npos) << content();
+  EXPECT_NE(section("### Type Map").find("[my_test_package.MyBaseTestClass](#my_test_packagemybasetestclass)"),
+            std::string::npos)
+    << content();
+  EXPECT_NE(section("### Type Map").find("[my_test_package.MyDerivedTestClass](#my_test_packagemyderivedtestclass)"),
+            std::string::npos)
+    << content();
   EXPECT_NE(section("### my_test_package.MyBaseTestClass").find("**Properties**"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyBaseTestClass").find("**baseProp**"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyBaseTestClass").find("[string](#string)"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyDerivedTestClass").find("Parent: [my_test_package.MyBaseTestClass](#my_test_packagemybasetestclass)"), std::string::npos) << content();
+  EXPECT_NE(section("### my_test_package.MyDerivedTestClass")
+              .find("Parent: [my_test_package.MyBaseTestClass](#my_test_packagemybasetestclass)"),
+            std::string::npos)
+    << content();
   EXPECT_NE(section("### my_test_package.MyDerivedTestClass").find("**Properties**"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyDerivedTestClass").find("**derivedProp**"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyDerivedTestClass").find("[f64](#f64)"), std::string::npos) << content();
 }
-
 
 /// @test
 /// Check sen gen mkdocs generates a correct documentation file from STL file with comments
@@ -472,58 +547,103 @@ TEST_F(AMkdocsGenerator, StlComment)
   ASSERT_TRUE(generateStl(comment));
   ASSERT_FALSE(content().empty()) << "mkdocs file is empty";
   ASSERT_TRUE(areAllTemplatesFilled()) << "a substitution site was left unfilled\n" << content();
-  EXPECT_NE(section("### Type Map").find("[my_test_package.MyTestClass](#my_test_packagemytestclass \"This is my test class\")"), std::string::npos) << content();
-  EXPECT_NE(section("### Type Map").find("[MyTestStruct](#my_test_packagemyteststruct \"This is my struct\")"), std::string::npos) << content();
-  EXPECT_NE(section("### Type Map").find("[MyTestVariant](#my_test_packagemytestvariant \"This is my variant\")"), std::string::npos) << content();
-  EXPECT_NE(section("### Type Map").find("[MyTestBoundedSequence](#my_test_packagemytestboundedsequence \"This is my bounded sequence\")"), std::string::npos) << content();
-  EXPECT_NE(section("### Type Map").find("[MyTestUnboundedSequence](#my_test_packagemytestunboundedsequence \"This is my unbounded sequence\")"), std::string::npos) << content();
-  EXPECT_NE(section("### Type Map").find("[MyTestQuantity](#my_test_packagemytestquantity \"This is my quantity\")"), std::string::npos) << content();
-  EXPECT_NE(section("### Type Map").find("[MyTestEnum](#my_test_packagemytestenum \"This is my enum\")"), std::string::npos) << content();
-  EXPECT_NE(section("### Type Map").find("[MyTestAlias](#my_test_packagemytestalias \"This is my alias\")"), std::string::npos) << content();
+  EXPECT_NE(section("### Type Map")
+              .find("[my_test_package.MyTestClass](#my_test_packagemytestclass \"This is my test class\")"),
+            std::string::npos)
+    << content();
+  EXPECT_NE(section("### Type Map").find("[MyTestStruct](#my_test_packagemyteststruct \"This is my struct\")"),
+            std::string::npos)
+    << content();
+  EXPECT_NE(section("### Type Map").find("[MyTestVariant](#my_test_packagemytestvariant \"This is my variant\")"),
+            std::string::npos)
+    << content();
+  EXPECT_NE(section("### Type Map")
+              .find("[MyTestBoundedSequence](#my_test_packagemytestboundedsequence \"This is my bounded sequence\")"),
+            std::string::npos)
+    << content();
+  EXPECT_NE(
+    section("### Type Map")
+      .find("[MyTestUnboundedSequence](#my_test_packagemytestunboundedsequence \"This is my unbounded sequence\")"),
+    std::string::npos)
+    << content();
+  EXPECT_NE(section("### Type Map").find("[MyTestQuantity](#my_test_packagemytestquantity \"This is my quantity\")"),
+            std::string::npos)
+    << content();
+  EXPECT_NE(section("### Type Map").find("[MyTestEnum](#my_test_packagemytestenum \"This is my enum\")"),
+            std::string::npos)
+    << content();
+  EXPECT_NE(section("### Type Map").find("[MyTestAlias](#my_test_packagemytestalias \"This is my alias\")"),
+            std::string::npos)
+    << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("**Properties**"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("**prop1**"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestClass").find("[string](#string) This is my prop"), std::string::npos) << content();
+  EXPECT_NE(section("### my_test_package.MyTestClass").find("[string](#string) This is my prop"), std::string::npos)
+    << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("**Methods**"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("**addNumbers**"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find(":   This is my method"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("[i32](#i32)"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("Returns: [i32](#i32)"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestClass").find("\n\n    | Argument  | Type | Description |"), std::string::npos) << content();
+  EXPECT_NE(section("### my_test_package.MyTestClass").find("\n\n    | Argument  | Type | Description |"),
+            std::string::npos)
+    << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("a | [i32](#i32)"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("b | [i32](#i32)"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("**Events**"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("**divisionByZero**"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find(":   This is my event"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestStruct").find("\n\nThis is my struct"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestStruct").find("\n\n| Field     | Description |"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestStruct").find("**x** | [f32](#f32) This is x"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestStruct").find("**y** | [f64](#f64) This is y"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestVariant").find("\n\nThis is my variant"), std::string::npos) << content();
+  EXPECT_NE(section("### my_test_package.MyTestStruct").find("\n\n| Field     | Description |"), std::string::npos)
+    << content();
+  EXPECT_NE(section("### my_test_package.MyTestStruct").find("**x** | [f32](#f32) This is x"), std::string::npos)
+    << content();
+  EXPECT_NE(section("### my_test_package.MyTestStruct").find("**y** | [f64](#f64) This is y"), std::string::npos)
+    << content();
+  EXPECT_NE(section("### my_test_package.MyTestVariant").find("\n\nThis is my variant"), std::string::npos)
+    << content();
   EXPECT_NE(section("### my_test_package.MyTestVariant").find("\n\n| Type |"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestVariant").find("[i32](#i32) integer"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestVariant").find("[bool](#bool) boolean"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestVariant").find("[string](#string) string"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestQuantity").find("\n\nThis is my quantity"), std::string::npos) << content();
+  EXPECT_NE(section("### my_test_package.MyTestVariant").find("[string](#string) string"), std::string::npos)
+    << content();
+  EXPECT_NE(section("### my_test_package.MyTestQuantity").find("\n\nThis is my quantity"), std::string::npos)
+    << content();
   EXPECT_NE(section("### my_test_package.MyTestQuantity").find("Representation: f32"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestQuantity").find("Unit:  m"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestEnum").find("\n\nThis is my enum"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestEnum").find("\nRepresentation: [u8](#u8)"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestEnum").find("first | 0 This is my first value"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestEnum").find("second | 1 This is my second value"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestEnum").find("third | 2 This is my third value"), std::string::npos) << content();
+  EXPECT_NE(section("### my_test_package.MyTestEnum").find("\nRepresentation: [u8](#u8)"), std::string::npos)
+    << content();
+  EXPECT_NE(section("### my_test_package.MyTestEnum").find("first | 0 This is my first value"), std::string::npos)
+    << content();
+  EXPECT_NE(section("### my_test_package.MyTestEnum").find("second | 1 This is my second value"), std::string::npos)
+    << content();
+  EXPECT_NE(section("### my_test_package.MyTestEnum").find("third | 2 This is my third value"), std::string::npos)
+    << content();
   EXPECT_NE(section("### my_test_package.MyTestBoundedSequence").find("\n\n|  |  |"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestBoundedSequence").find("Element Type | [i64](#i64)"), std::string::npos) << content();
+  EXPECT_NE(section("### my_test_package.MyTestBoundedSequence").find("Element Type | [i64](#i64)"), std::string::npos)
+    << content();
   EXPECT_NE(section("### my_test_package.MyTestBoundedSequence").find("Bounded | Yes"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestBoundedSequence").find("Max size | 100"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestBoundedSequence").find("\n\nThis is my bounded sequence"), std::string::npos) << content();
+  EXPECT_NE(section("### my_test_package.MyTestBoundedSequence").find("Max size | 100"), std::string::npos)
+    << content();
+  EXPECT_NE(section("### my_test_package.MyTestBoundedSequence").find("\n\nThis is my bounded sequence"),
+            std::string::npos)
+    << content();
   EXPECT_NE(section("### my_test_package.MyTestUnboundedSequence").find("\n\n|  |  |"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestUnboundedSequence").find("Element Type | [i32](#i32)"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestUnboundedSequence").find("Bounded | No"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestUnboundedSequence").find("\n\nThis is my unbounded sequence"), std::string::npos) << content();
+  EXPECT_NE(section("### my_test_package.MyTestUnboundedSequence").find("Element Type | [i32](#i32)"),
+            std::string::npos)
+    << content();
+  EXPECT_NE(section("### my_test_package.MyTestUnboundedSequence").find("Bounded | No"), std::string::npos)
+    << content();
+  EXPECT_NE(section("### my_test_package.MyTestUnboundedSequence").find("\n\nThis is my unbounded sequence"),
+            std::string::npos)
+    << content();
   EXPECT_NE(section("### my_test_package.MyTestAlias").find("\n\nThis is my alias"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestAlias").find("Aliased Type: [i64](#i64)"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestOptional").find("\n\nThis is my optional"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestOptional").find("Optional Type: [f32](#f32)"), std::string::npos) << content();
+  EXPECT_NE(section("### my_test_package.MyTestAlias").find("Aliased Type: [i64](#i64)"), std::string::npos)
+    << content();
+  EXPECT_NE(section("### my_test_package.MyTestOptional").find("\n\nThis is my optional"), std::string::npos)
+    << content();
+  EXPECT_NE(section("### my_test_package.MyTestOptional").find("Optional Type: [f32](#f32)"), std::string::npos)
+    << content();
 }
 
 /// @test
@@ -533,21 +653,33 @@ TEST_F(AMkdocsGenerator, StlEscapedPipeComment)
   ASSERT_TRUE(generateStl(escapedPipeComment));
   ASSERT_FALSE(content().empty()) << "mkdocs file is empty";
   ASSERT_TRUE(areAllTemplatesFilled()) << "a substitution site was left unfilled\n" << content();
-  EXPECT_NE(section("### Type Map").find("[my_test_package.MyTestClass](#my_test_packagemytestclass \"escaped \\|\")"), std::string::npos) << content();
-  EXPECT_NE(section("### Type Map").find("[MyTestStruct](#my_test_packagemyteststruct)"), std::string::npos) << content();
-  EXPECT_NE(section("### Type Map").find("[MyTestVariant](#my_test_packagemytestvariant)"), std::string::npos) << content();
+  EXPECT_NE(section("### Type Map").find("[my_test_package.MyTestClass](#my_test_packagemytestclass \"escaped \\|\")"),
+            std::string::npos)
+    << content();
+  EXPECT_NE(section("### Type Map").find("[MyTestStruct](#my_test_packagemyteststruct)"), std::string::npos)
+    << content();
+  EXPECT_NE(section("### Type Map").find("[MyTestVariant](#my_test_packagemytestvariant)"), std::string::npos)
+    << content();
   EXPECT_NE(section("### Type Map").find("[MyTestEnum](#my_test_packagemytestenum)"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("**Properties**"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestClass").find("**prop1**"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestClass").find("[string](#string) escaped \\|"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestStruct").find("\n\n| Field     | Description |"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestStruct").find("**x** | [f32](#f32) escaped \\|"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestStruct").find("**y** | [f64](#f64) escaped \\|"), std::string::npos) << content();
+  EXPECT_NE(section("### my_test_package.MyTestClass").find("[string](#string) escaped \\|"), std::string::npos)
+    << content();
+  EXPECT_NE(section("### my_test_package.MyTestStruct").find("\n\n| Field     | Description |"), std::string::npos)
+    << content();
+  EXPECT_NE(section("### my_test_package.MyTestStruct").find("**x** | [f32](#f32) escaped \\|"), std::string::npos)
+    << content();
+  EXPECT_NE(section("### my_test_package.MyTestStruct").find("**y** | [f64](#f64) escaped \\|"), std::string::npos)
+    << content();
   EXPECT_NE(section("### my_test_package.MyTestVariant").find("\n\n| Type |"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestVariant").find("[i32](#i32) escaped \\|"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestVariant").find("[bool](#bool) escaped \\|"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestVariant").find("[string](#string) escaped \\|"), std::string::npos) << content();
-  EXPECT_NE(section("### my_test_package.MyTestEnum").find("\nRepresentation: [u8](#u8)"), std::string::npos) << content();
+  EXPECT_NE(section("### my_test_package.MyTestVariant").find("[i32](#i32) escaped \\|"), std::string::npos)
+    << content();
+  EXPECT_NE(section("### my_test_package.MyTestVariant").find("[bool](#bool) escaped \\|"), std::string::npos)
+    << content();
+  EXPECT_NE(section("### my_test_package.MyTestVariant").find("[string](#string) escaped \\|"), std::string::npos)
+    << content();
+  EXPECT_NE(section("### my_test_package.MyTestEnum").find("\nRepresentation: [u8](#u8)"), std::string::npos)
+    << content();
   EXPECT_NE(section("### my_test_package.MyTestEnum").find("first | 0 escaped \\|"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestEnum").find("second | 1 escaped \\|"), std::string::npos) << content();
   EXPECT_NE(section("### my_test_package.MyTestEnum").find("third | 2 escaped \\|"), std::string::npos) << content();

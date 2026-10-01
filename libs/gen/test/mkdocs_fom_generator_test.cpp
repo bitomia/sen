@@ -48,12 +48,17 @@ TEST_F(AMkdocsGenerator, FomEmptyClass)
 
   ASSERT_FALSE(content().empty()) << "mkdocs file is empty";
   ASSERT_TRUE(areAllTemplatesFilled()) << "a substitution site was left unfilled\n" << content();
-  EXPECT_NE(section("### Type Map").find("[hla.ObjectRoot](#hlaobjectroot \"HLA Base Class that contains the RTI object ID\")"), std::string::npos) << content();
-  EXPECT_NE(section("### Type Map").find("[empty_class.MyTestClass](#empty_classmytestclass)"), std::string::npos) << content();
+  EXPECT_NE(
+    section("### Type Map").find("[hla.ObjectRoot](#hlaobjectroot \"HLA Base Class that contains the RTI object ID\")"),
+    std::string::npos)
+    << content();
+  EXPECT_NE(section("### Type Map").find("[empty_class.MyTestClass](#empty_classmytestclass)"), std::string::npos)
+    << content();
   EXPECT_NE(section("### hla.ObjectRoot").find("**Properties**"), std::string::npos) << content();
   EXPECT_NE(section("### hla.ObjectRoot").find("**rtiId**"), std::string::npos) << content();
   EXPECT_NE(section("### hla.ObjectRoot").find("[string](#string) HLA RTI object ID"), std::string::npos) << content();
-  EXPECT_NE(section("### empty_class.MyTestClass").find("Parent: [hla.ObjectRoot](#hlaobjectroot)"), std::string::npos) << content();
+  EXPECT_NE(section("### empty_class.MyTestClass").find("Parent: [hla.ObjectRoot](#hlaobjectroot)"), std::string::npos)
+    << content();
   EXPECT_NE(section("### hla.MaybeU8").find("Optional Type: [u8](#u8)"), std::string::npos) << content();
   EXPECT_NE(section("### hla.MaybeI16").find("Optional Type: [i16](#i16)"), std::string::npos) << content();
   EXPECT_NE(section("### hla.MaybeU16").find("Optional Type: [u16](#u16)"), std::string::npos) << content();
@@ -65,8 +70,10 @@ TEST_F(AMkdocsGenerator, FomEmptyClass)
   EXPECT_NE(section("### hla.MaybeF64").find("Optional Type: [f64](#f64)"), std::string::npos) << content();
   EXPECT_NE(section("### hla.MaybeBool").find("Optional Type: [bool](#bool)"), std::string::npos) << content();
   EXPECT_NE(section("### hla.MaybeString").find("Optional Type: [string](#string)"), std::string::npos) << content();
-  EXPECT_NE(section("### hla.MaybeTimeStamp").find("Optional Type: [sen.TimeStamp](#sentimestamp)"), std::string::npos) << content();
-  EXPECT_NE(section("### hla.MaybeDuration").find("Optional Type: [sen.Duration](#senduration)"), std::string::npos) << content();
+  EXPECT_NE(section("### hla.MaybeTimeStamp").find("Optional Type: [sen.TimeStamp](#sentimestamp)"), std::string::npos)
+    << content();
+  EXPECT_NE(section("### hla.MaybeDuration").find("Optional Type: [sen.Duration](#senduration)"), std::string::npos)
+    << content();
 }
 
 /// @test
@@ -80,17 +87,28 @@ TEST_F(AMkdocsGenerator, FomBasicProperties)
 
   ASSERT_FALSE(content().empty()) << "mkdocs file is empty";
   ASSERT_TRUE(areAllTemplatesFilled()) << "a substitution site was left unfilled\n" << content();
-  EXPECT_NE(section("### Type Map").find("[hla.ObjectRoot](#hlaobjectroot \"HLA Base Class that contains the RTI object ID\")"), std::string::npos) << content();
-  EXPECT_NE(section("### Type Map").find("[basic_properties.MyTestClass](#basic_propertiesmytestclass)"), std::string::npos) << content();
+  EXPECT_NE(
+    section("### Type Map").find("[hla.ObjectRoot](#hlaobjectroot \"HLA Base Class that contains the RTI object ID\")"),
+    std::string::npos)
+    << content();
+  EXPECT_NE(section("### Type Map").find("[basic_properties.MyTestClass](#basic_propertiesmytestclass)"),
+            std::string::npos)
+    << content();
   EXPECT_NE(section("### Type Map").find("[MyTestInt](#basic_propertiesmytestint)"), std::string::npos) << content();
   EXPECT_NE(section("### hla.ObjectRoot").find("**Properties**"), std::string::npos) << content();
   EXPECT_NE(section("### hla.ObjectRoot").find("**rtiId**"), std::string::npos) << content();
   EXPECT_NE(section("### hla.ObjectRoot").find("[string](#string) HLA RTI object ID"), std::string::npos) << content();
-  EXPECT_NE(section("### basic_properties.MyTestClass").find("Parent: [hla.ObjectRoot](#hlaobjectroot)"), std::string::npos) << content();
+  EXPECT_NE(section("### basic_properties.MyTestClass").find("Parent: [hla.ObjectRoot](#hlaobjectroot)"),
+            std::string::npos)
+    << content();
   EXPECT_NE(section("### basic_properties.MyTestClass").find("**Properties**"), std::string::npos) << content();
   EXPECT_NE(section("### basic_properties.MyTestClass").find("**prop1**"), std::string::npos) << content();
-  EXPECT_NE(section("### basic_properties.MyTestClass").find("[basic_properties.MyTestInt](#basic_propertiesmytestint)"), std::string::npos) << content();
-  EXPECT_NE(section("### basic_properties.MyTestInt").find("Aliased Type: [i32](#i32)"), std::string::npos) << content();
+  EXPECT_NE(
+    section("### basic_properties.MyTestClass").find("[basic_properties.MyTestInt](#basic_propertiesmytestint)"),
+    std::string::npos)
+    << content();
+  EXPECT_NE(section("### basic_properties.MyTestInt").find("Aliased Type: [i32](#i32)"), std::string::npos)
+    << content();
   EXPECT_NE(section("### hla.MaybeU8").find("Optional Type: [u8](#u8)"), std::string::npos) << content();
   EXPECT_NE(section("### hla.MaybeI16").find("Optional Type: [i16](#i16)"), std::string::npos) << content();
   EXPECT_NE(section("### hla.MaybeU16").find("Optional Type: [u16](#u16)"), std::string::npos) << content();
@@ -102,8 +120,10 @@ TEST_F(AMkdocsGenerator, FomBasicProperties)
   EXPECT_NE(section("### hla.MaybeF64").find("Optional Type: [f64](#f64)"), std::string::npos) << content();
   EXPECT_NE(section("### hla.MaybeBool").find("Optional Type: [bool](#bool)"), std::string::npos) << content();
   EXPECT_NE(section("### hla.MaybeString").find("Optional Type: [string](#string)"), std::string::npos) << content();
-  EXPECT_NE(section("### hla.MaybeTimeStamp").find("Optional Type: [sen.TimeStamp](#sentimestamp)"), std::string::npos) << content();
-  EXPECT_NE(section("### hla.MaybeDuration").find("Optional Type: [sen.Duration](#senduration)"), std::string::npos) << content();
+  EXPECT_NE(section("### hla.MaybeTimeStamp").find("Optional Type: [sen.TimeStamp](#sentimestamp)"), std::string::npos)
+    << content();
+  EXPECT_NE(section("### hla.MaybeDuration").find("Optional Type: [sen.Duration](#senduration)"), std::string::npos)
+    << content();
 }
 
 /// @test
@@ -117,23 +137,43 @@ TEST_F(AMkdocsGenerator, FomStructProperty)
 
   ASSERT_FALSE(content().empty()) << "mkdocs file is empty";
   ASSERT_TRUE(areAllTemplatesFilled()) << "a substitution site was left unfilled\n" << content();
-  EXPECT_NE(section("### Type Map").find("[hla.ObjectRoot](#hlaobjectroot \"HLA Base Class that contains the RTI object ID\")"), std::string::npos) << content();
-  EXPECT_NE(section("### Type Map").find("[struct_property.MyTestClass](#struct_propertymytestclass)"), std::string::npos) << content();
-  EXPECT_NE(section("### Type Map").find("[MyTestStruct](#struct_propertymyteststruct)"), std::string::npos) << content();
+  EXPECT_NE(
+    section("### Type Map").find("[hla.ObjectRoot](#hlaobjectroot \"HLA Base Class that contains the RTI object ID\")"),
+    std::string::npos)
+    << content();
+  EXPECT_NE(section("### Type Map").find("[struct_property.MyTestClass](#struct_propertymytestclass)"),
+            std::string::npos)
+    << content();
+  EXPECT_NE(section("### Type Map").find("[MyTestStruct](#struct_propertymyteststruct)"), std::string::npos)
+    << content();
   EXPECT_NE(section("### Type Map").find("[MyTestInt32](#struct_propertymytestint32)"), std::string::npos) << content();
   EXPECT_NE(section("### Type Map").find("[MyTestInt16](#struct_propertymytestint16)"), std::string::npos) << content();
   EXPECT_NE(section("### hla.ObjectRoot").find("**Properties**"), std::string::npos) << content();
   EXPECT_NE(section("### hla.ObjectRoot").find("**rtiId**"), std::string::npos) << content();
   EXPECT_NE(section("### hla.ObjectRoot").find("[string](#string) HLA RTI object ID"), std::string::npos) << content();
-  EXPECT_NE(section("### struct_property.MyTestClass").find("Parent: [hla.ObjectRoot](#hlaobjectroot)"), std::string::npos) << content();
+  EXPECT_NE(section("### struct_property.MyTestClass").find("Parent: [hla.ObjectRoot](#hlaobjectroot)"),
+            std::string::npos)
+    << content();
   EXPECT_NE(section("### struct_property.MyTestClass").find("**Properties**"), std::string::npos) << content();
   EXPECT_NE(section("### struct_property.MyTestClass").find("**prop1**"), std::string::npos) << content();
-  EXPECT_NE(section("### struct_property.MyTestClass").find("[struct_property.MyTestStruct](#struct_propertymyteststruct)"), std::string::npos) << content();
-  EXPECT_NE(section("### struct_property.MyTestStruct").find("\n\n| Field     | Description |"), std::string::npos) << content();
-  EXPECT_NE(section("### struct_property.MyTestStruct").find("**field1** | [struct_property.MyTestInt32](#struct_propertymytestint32)"), std::string::npos) << content();
-  EXPECT_NE(section("### struct_property.MyTestStruct").find("**field2** | [struct_property.MyTestInt16](#struct_propertymytestint16)"), std::string::npos) << content();
-  EXPECT_NE(section("### struct_property.MyTestInt32").find("Aliased Type: [i32](#i32)"), std::string::npos) << content();
-  EXPECT_NE(section("### struct_property.MyTestInt16").find("Aliased Type: [i16](#i16)"), std::string::npos) << content();
+  EXPECT_NE(
+    section("### struct_property.MyTestClass").find("[struct_property.MyTestStruct](#struct_propertymyteststruct)"),
+    std::string::npos)
+    << content();
+  EXPECT_NE(section("### struct_property.MyTestStruct").find("\n\n| Field     | Description |"), std::string::npos)
+    << content();
+  EXPECT_NE(section("### struct_property.MyTestStruct")
+              .find("**field1** | [struct_property.MyTestInt32](#struct_propertymytestint32)"),
+            std::string::npos)
+    << content();
+  EXPECT_NE(section("### struct_property.MyTestStruct")
+              .find("**field2** | [struct_property.MyTestInt16](#struct_propertymytestint16)"),
+            std::string::npos)
+    << content();
+  EXPECT_NE(section("### struct_property.MyTestInt32").find("Aliased Type: [i32](#i32)"), std::string::npos)
+    << content();
+  EXPECT_NE(section("### struct_property.MyTestInt16").find("Aliased Type: [i16](#i16)"), std::string::npos)
+    << content();
   EXPECT_NE(section("### hla.MaybeU8").find("Optional Type: [u8](#u8)"), std::string::npos) << content();
   EXPECT_NE(section("### hla.MaybeI16").find("Optional Type: [i16](#i16)"), std::string::npos) << content();
   EXPECT_NE(section("### hla.MaybeU16").find("Optional Type: [u16](#u16)"), std::string::npos) << content();
@@ -145,8 +185,10 @@ TEST_F(AMkdocsGenerator, FomStructProperty)
   EXPECT_NE(section("### hla.MaybeF64").find("Optional Type: [f64](#f64)"), std::string::npos) << content();
   EXPECT_NE(section("### hla.MaybeBool").find("Optional Type: [bool](#bool)"), std::string::npos) << content();
   EXPECT_NE(section("### hla.MaybeString").find("Optional Type: [string](#string)"), std::string::npos) << content();
-  EXPECT_NE(section("### hla.MaybeTimeStamp").find("Optional Type: [sen.TimeStamp](#sentimestamp)"), std::string::npos) << content();
-  EXPECT_NE(section("### hla.MaybeDuration").find("Optional Type: [sen.Duration](#senduration)"), std::string::npos) << content();
+  EXPECT_NE(section("### hla.MaybeTimeStamp").find("Optional Type: [sen.TimeStamp](#sentimestamp)"), std::string::npos)
+    << content();
+  EXPECT_NE(section("### hla.MaybeDuration").find("Optional Type: [sen.Duration](#senduration)"), std::string::npos)
+    << content();
 }
 
 /// @test
@@ -160,18 +202,28 @@ TEST_F(AMkdocsGenerator, FomEnumProperty)
 
   ASSERT_FALSE(content().empty()) << "mkdocs file is empty";
   ASSERT_TRUE(areAllTemplatesFilled()) << "a substitution site was left unfilled\n" << content();
-  EXPECT_NE(section("### Type Map").find("[hla.ObjectRoot](#hlaobjectroot \"HLA Base Class that contains the RTI object ID\")"), std::string::npos) << content();
-  EXPECT_NE(section("### Type Map").find("[enum_property.MyTestClass](#enum_propertymytestclass)"), std::string::npos) << content();
+  EXPECT_NE(
+    section("### Type Map").find("[hla.ObjectRoot](#hlaobjectroot \"HLA Base Class that contains the RTI object ID\")"),
+    std::string::npos)
+    << content();
+  EXPECT_NE(section("### Type Map").find("[enum_property.MyTestClass](#enum_propertymytestclass)"), std::string::npos)
+    << content();
   EXPECT_NE(section("### Type Map").find("[MyTestEnum](#enum_propertymytestenum)"), std::string::npos) << content();
   EXPECT_NE(section("### hla.ObjectRoot").find("**Properties**"), std::string::npos) << content();
   EXPECT_NE(section("### hla.ObjectRoot").find("**rtiId**"), std::string::npos) << content();
   EXPECT_NE(section("### hla.ObjectRoot").find("[string](#string) HLA RTI object ID"), std::string::npos) << content();
-  EXPECT_NE(section("### enum_property.MyTestClass").find("Parent: [hla.ObjectRoot](#hlaobjectroot)"), std::string::npos) << content();
+  EXPECT_NE(section("### enum_property.MyTestClass").find("Parent: [hla.ObjectRoot](#hlaobjectroot)"),
+            std::string::npos)
+    << content();
   EXPECT_NE(section("### enum_property.MyTestClass").find("**Properties**"), std::string::npos) << content();
   EXPECT_NE(section("### enum_property.MyTestClass").find("**prop1**"), std::string::npos) << content();
-  EXPECT_NE(section("### enum_property.MyTestClass").find("[enum_property.MyTestEnum](#enum_propertymytestenum)"), std::string::npos) << content();
-  EXPECT_NE(section("### enum_property.MyTestEnum").find("Representation: [i32](#i32)"), std::string::npos) << content();
-  EXPECT_NE(section("### enum_property.MyTestEnum").find("\n\n| Enumerator  | Value |"), std::string::npos) << content();
+  EXPECT_NE(section("### enum_property.MyTestClass").find("[enum_property.MyTestEnum](#enum_propertymytestenum)"),
+            std::string::npos)
+    << content();
+  EXPECT_NE(section("### enum_property.MyTestEnum").find("Representation: [i32](#i32)"), std::string::npos)
+    << content();
+  EXPECT_NE(section("### enum_property.MyTestEnum").find("\n\n| Enumerator  | Value |"), std::string::npos)
+    << content();
   EXPECT_NE(section("### enum_property.MyTestEnum").find("| first | 1 |"), std::string::npos) << content();
   EXPECT_NE(section("### enum_property.MyTestEnum").find("| second | 2 |"), std::string::npos) << content();
   EXPECT_NE(section("### enum_property.MyTestEnum").find("| third | 3 |"), std::string::npos) << content();
@@ -186,6 +238,8 @@ TEST_F(AMkdocsGenerator, FomEnumProperty)
   EXPECT_NE(section("### hla.MaybeF64").find("Optional Type: [f64](#f64)"), std::string::npos) << content();
   EXPECT_NE(section("### hla.MaybeBool").find("Optional Type: [bool](#bool)"), std::string::npos) << content();
   EXPECT_NE(section("### hla.MaybeString").find("Optional Type: [string](#string)"), std::string::npos) << content();
-  EXPECT_NE(section("### hla.MaybeTimeStamp").find("Optional Type: [sen.TimeStamp](#sentimestamp)"), std::string::npos) << content();
-  EXPECT_NE(section("### hla.MaybeDuration").find("Optional Type: [sen.Duration](#senduration)"), std::string::npos) << content();
+  EXPECT_NE(section("### hla.MaybeTimeStamp").find("Optional Type: [sen.TimeStamp](#sentimestamp)"), std::string::npos)
+    << content();
+  EXPECT_NE(section("### hla.MaybeDuration").find("Optional Type: [sen.Duration](#senduration)"), std::string::npos)
+    << content();
 }
