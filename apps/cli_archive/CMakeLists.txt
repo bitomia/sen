@@ -19,3 +19,7 @@ add_executable(sen::cli_archive ALIAS cli_archive)
 sen_internal_configure_app(cli_archive)
 sen_internal_install(cli_archive)
 sen_enable_static_analysis(cli_archive)
+
+if(SEN_BUILD_TESTS)
+  add_subdirectory(test)
+endif()
