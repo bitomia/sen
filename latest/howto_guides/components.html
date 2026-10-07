@@ -1216,6 +1216,19 @@
       
     </span>
 </a>
+<nav aria-label="The execution loop" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#publishing-with-the-time-the-data-came-from">
+<span class="md-ellipsis">
+      
+        Publishing with the time the data came from
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#finding-other-objects">
@@ -1822,22 +1835,29 @@ before anything else loads, and to tear it down afterwards:</p>
 </span><span id="__span-1-2"><a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="p">{</span>
 </span><span id="__span-1-3"><a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">  </span><span class="p">[[</span><span class="na">nodiscard</span><span class="p">]]</span><span class="w"> </span><span class="o">::</span><span class="n">sen</span><span class="o">::</span><span class="n">kernel</span><span class="o">::</span><span class="n">FuncResult</span><span class="w"> </span><span class="n">preload</span><span class="p">(</span><span class="o">::</span><span class="n">sen</span><span class="o">::</span><span class="n">kernel</span><span class="o">::</span><span class="n">PreloadApi</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">api</span><span class="p">)</span><span class="w"> </span><span class="k">override</span>
 </span><span id="__span-1-4"><a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">  </span><span class="p">{</span>
-</span><span id="__span-1-5"><a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">    </span><span class="o">::</span><span class="n">tracy</span><span class="o">::</span><span class="n">StartupProfiler</span><span class="p">();</span><span class="w">  </span><span class="c1">// NOLINT(misc-include-cleaner)</span>
-</span><span id="__span-1-6"><a href="#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">    </span><span class="n">api</span><span class="p">.</span><span class="n">installTracerFactory</span><span class="p">([](</span><span class="k">auto</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">TracyTracer</span><span class="o">&gt;</span><span class="p">(</span><span class="n">name</span><span class="p">);</span><span class="w"> </span><span class="p">});</span>
-</span><span id="__span-1-7"><a href="#__codelineno-1-7" id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">::</span><span class="n">sen</span><span class="o">::</span><span class="n">Ok</span><span class="p">();</span>
-</span><span id="__span-1-8"><a href="#__codelineno-1-8" id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">  </span><span class="p">}</span>
-</span><span id="__span-1-9"><a href="#__codelineno-1-9" id="__codelineno-1-9" name="__codelineno-1-9"></a>
-</span><span id="__span-1-10"><a href="#__codelineno-1-10" id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">  </span><span class="p">[[</span><span class="na">nodiscard</span><span class="p">]]</span><span class="w"> </span><span class="o">::</span><span class="n">sen</span><span class="o">::</span><span class="n">kernel</span><span class="o">::</span><span class="n">FuncResult</span><span class="w"> </span><span class="n">unload</span><span class="p">(</span><span class="o">::</span><span class="n">sen</span><span class="o">::</span><span class="n">kernel</span><span class="o">::</span><span class="n">UnloadApi</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">api</span><span class="p">)</span><span class="w"> </span><span class="k">override</span>
-</span><span id="__span-1-11"><a href="#__codelineno-1-11" id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="w">  </span><span class="p">{</span>
-</span><span id="__span-1-12"><a href="#__codelineno-1-12" id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ignore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">api</span><span class="p">;</span>
-</span><span id="__span-1-13"><a href="#__codelineno-1-13" id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="w">    </span><span class="o">::</span><span class="n">tracy</span><span class="o">::</span><span class="n">ShutdownProfiler</span><span class="p">();</span><span class="w">  </span><span class="c1">// NOLINT(misc-include-cleaner)</span>
-</span><span id="__span-1-14"><a href="#__codelineno-1-14" id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">::</span><span class="n">sen</span><span class="o">::</span><span class="n">Ok</span><span class="p">();</span>
-</span><span id="__span-1-15"><a href="#__codelineno-1-15" id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="w">  </span><span class="p">}</span>
-</span><span id="__span-1-16"><a href="#__codelineno-1-16" id="__codelineno-1-16" name="__codelineno-1-16"></a>
-</span><span id="__span-1-17"><a href="#__codelineno-1-17" id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="w">  </span><span class="p">[[</span><span class="na">nodiscard</span><span class="p">]]</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isRealTimeOnly</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-</span><span id="__span-1-18"><a href="#__codelineno-1-18" id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="p">};</span>
+</span><span id="__span-1-5"><a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">    </span><span class="c1">// Started once per process, and never shut down. Every kernel thread and every other component can</span>
+</span><span id="__span-1-6"><a href="#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">    </span><span class="c1">// plot through the tracer installed below, and shutdown unloads this component's group before the</span>
+</span><span id="__span-1-7"><a href="#__codelineno-1-7" id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">    </span><span class="c1">// lower groups stop running, so a profiler released on unload would be gone while the kernel's own</span>
+</span><span id="__span-1-8"><a href="#__codelineno-1-8" id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">    </span><span class="c1">// runner was still plotting into it.</span>
+</span><span id="__span-1-9"><a href="#__codelineno-1-9" id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">once_flag</span><span class="w"> </span><span class="n">profilerStarted</span><span class="p">;</span>
+</span><span id="__span-1-10"><a href="#__codelineno-1-10" id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">call_once</span><span class="p">(</span><span class="n">profilerStarted</span><span class="p">,</span><span class="w"> </span><span class="p">[]()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">::</span><span class="n">tracy</span><span class="o">::</span><span class="n">StartupProfiler</span><span class="p">();</span><span class="w"> </span><span class="p">});</span><span class="w">  </span><span class="c1">// NOLINT(misc-include-cleaner)</span>
+</span><span id="__span-1-11"><a href="#__codelineno-1-11" id="__codelineno-1-11" name="__codelineno-1-11"></a>
+</span><span id="__span-1-12"><a href="#__codelineno-1-12" id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">    </span><span class="n">api</span><span class="p">.</span><span class="n">installTracerFactory</span><span class="p">([](</span><span class="k">auto</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">TracyTracer</span><span class="o">&gt;</span><span class="p">(</span><span class="n">name</span><span class="p">);</span><span class="w"> </span><span class="p">});</span>
+</span><span id="__span-1-13"><a href="#__codelineno-1-13" id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">::</span><span class="n">sen</span><span class="o">::</span><span class="n">Ok</span><span class="p">();</span>
+</span><span id="__span-1-14"><a href="#__codelineno-1-14" id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-15"><a href="#__codelineno-1-15" id="__codelineno-1-15" name="__codelineno-1-15"></a>
+</span><span id="__span-1-16"><a href="#__codelineno-1-16" id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="w">  </span><span class="p">[[</span><span class="na">nodiscard</span><span class="p">]]</span><span class="w"> </span><span class="o">::</span><span class="n">sen</span><span class="o">::</span><span class="n">kernel</span><span class="o">::</span><span class="n">FuncResult</span><span class="w"> </span><span class="n">unload</span><span class="p">(</span><span class="o">::</span><span class="n">sen</span><span class="o">::</span><span class="n">kernel</span><span class="o">::</span><span class="n">UnloadApi</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">api</span><span class="p">)</span><span class="w"> </span><span class="k">override</span>
+</span><span id="__span-1-17"><a href="#__codelineno-1-17" id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-1-18"><a href="#__codelineno-1-18" id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ignore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">api</span><span class="p">;</span>
 </span><span id="__span-1-19"><a href="#__codelineno-1-19" id="__codelineno-1-19" name="__codelineno-1-19"></a>
-</span><span id="__span-1-20"><a href="#__codelineno-1-20" id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="n">SEN_COMPONENT</span><span class="p">(</span><span class="n">TracyComponent</span><span class="p">)</span>
+</span><span id="__span-1-20"><a href="#__codelineno-1-20" id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="w">    </span><span class="c1">// No ShutdownProfiler here: see preload(). The profiler lives until the process exits.</span>
+</span><span id="__span-1-21"><a href="#__codelineno-1-21" id="__codelineno-1-21" name="__codelineno-1-21"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">::</span><span class="n">sen</span><span class="o">::</span><span class="n">Ok</span><span class="p">();</span>
+</span><span id="__span-1-22"><a href="#__codelineno-1-22" id="__codelineno-1-22" name="__codelineno-1-22"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-23"><a href="#__codelineno-1-23" id="__codelineno-1-23" name="__codelineno-1-23"></a>
+</span><span id="__span-1-24"><a href="#__codelineno-1-24" id="__codelineno-1-24" name="__codelineno-1-24"></a><span class="w">  </span><span class="p">[[</span><span class="na">nodiscard</span><span class="p">]]</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isRealTimeOnly</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-1-25"><a href="#__codelineno-1-25" id="__codelineno-1-25" name="__codelineno-1-25"></a><span class="p">};</span>
+</span><span id="__span-1-26"><a href="#__codelineno-1-26" id="__codelineno-1-26" name="__codelineno-1-26"></a>
+</span><span id="__span-1-27"><a href="#__codelineno-1-27" id="__codelineno-1-27" name="__codelineno-1-27"></a><span class="n">SEN_COMPONENT</span><span class="p">(</span><span class="n">TracyComponent</span><span class="p">)</span>
 </span></code></pre></div>
 <p>That is the whole component. <code>preload()</code> is the only place a process-wide profiler can be started,
 because it is the only point at which nothing else has loaded yet. <code>isRealTimeOnly()</code> tells the
@@ -1990,6 +2010,32 @@ responsive to others, leave it out:</p>
 tells it, so <code>RunApi::getTargetCycleTime()</code> gives its objects nothing. Objects built under <code>build:</code>
 always have a cycle time, because the kernel's pipeline calls <code>execLoop</code> for them. If you drive the
 loop yourself and your objects need the period, pass it to them.</p>
+<h3 id="publishing-with-the-time-the-data-came-from">Publishing with the time the data came from<a class="headerlink" href="#publishing-with-the-time-the-data-came-from" title="Permanent link">¶</a></h3>
+<p><code>commit()</code> tags everything it publishes with Sen's execution time. For a component that bridges a
+system keeping its own clock, that is the wrong time. The state was captured when that other system
+captured it, which is earlier than the moment your component sends it on. Pass the time you want
+instead:</p>
+<div class="language-cpp highlight"><span class="filename">stamping a commit with the time of origin</span><pre><span></span><code><span id="__span-11-1"><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="n">api</span><span class="p">.</span><span class="n">drainInputs</span><span class="p">();</span>
+</span><span id="__span-11-2"><a href="#__codelineno-11-2" id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="n">api</span><span class="p">.</span><span class="n">update</span><span class="p">();</span>
+</span><span id="__span-11-3"><a href="#__codelineno-11-3" id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="c1">// ... read the other system, which also tells you when its snapshot was taken ...</span>
+</span><span id="__span-11-4"><a href="#__codelineno-11-4" id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="n">api</span><span class="p">.</span><span class="n">commit</span><span class="p">(</span><span class="n">snapshotTime</span><span class="p">);</span>
+</span></code></pre></div>
+<p>A subscriber then sees the time the data came from.</p>
+<p>The time applies to every object your component publishes in that commit, which suits a snapshot of
+a whole system. It also applies to the objects your component publishes itself, not only the ones
+carrying the bridged data. If your component works those out from the snapshot, that is correct,
+because they describe the same instant.</p>
+<p><code>getTime()</code> still reports Sen's time. Your component keeps its own cycle, and the other components
+and the run mode are unaffected. Only the tag on the data changes.</p>
+<p>Keep the time advancing, and use one clock to do it. <code>commit()</code> and <code>commit(time)</code> read their stamps
+from different places. A component that alternates between them tags the same objects from two
+clocks, and the times it publishes can then go backwards.</p>
+<p>That matters because the stamp travels with the data. Sen compares it in one place. When the bus
+replays buffered updates to a subscriber that joined late, an update no newer than the state that
+subscriber already has is skipped. If your source clock pauses and its state has not changed either,
+that update has nothing new in it.</p>
+<p>This is for a component that owns its loop. <code>execLoop</code> commits at the end of every cycle, so a stamp
+set inside its work function is replaced by the one that cycle's own commit applies.</p>
 <h2 id="finding-other-objects">Finding other objects<a class="headerlink" href="#finding-other-objects" title="Permanent link">¶</a></h2>
 <p>A component discovers objects exactly the way an object does. <code>RunApi</code> inherits <code>KernelApi</code>, so
 <code>selectAllFrom&lt;T&gt;()</code>, <code>selectFrom&lt;T&gt;()</code> and <code>getSource()</code> are all available inside <code>run()</code> with the
@@ -2006,7 +2052,7 @@ special in that its buses are never shared across a process boundary.</p>
 <span class="md-icon" title="Last update">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 28, 2026 05:56:21 UTC">September 28, 2026</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 7, 2026 10:14:20 UTC">October 7, 2026</span>
 </span>
 </aside>
 </article>

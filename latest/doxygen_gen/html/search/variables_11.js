@@ -20,7 +20,7 @@ var searchData=
   ['stackmax_17',['stackMax',['../group__lang.html#gadaba2431bbf18b6f69e8511fe4bb9e11',1,'sen::lang']]],
   ['staticcapacity_18',['staticCapacity',['../classsen_1_1_static_vector.html#a8c551754ad5491c86e41261d9a4d332d',1,'sen::StaticVector']]],
   ['stlfiles_19',['stlFiles',['../group__gen.html#aa8b989621db7088f96a4de874359b1a6',1,'sen::gen::CppExportsOptions']]],
-  ['storage_20',['storage',['../namespacesen_1_1lang.html#a7142ff98f79af054a88338fd8da9478a',1,'sen::lang::ParsedDoc']]],
+  ['storage_20',['storage',['../namespacesen_1_1lang_1_1fom.html#a0c5fcee2e5649cebf3fea83aec5f2b2f',1,'sen::lang::fom::Document']]],
   ['storagetype_21',['storageType',['../structsen_1_1_enum_spec.html#a10238970204d15fdab151b051691637c',1,'sen::EnumSpec']]],
   ['storagetypename_22',['storageTypeName',['../group__lang.html#a4ed14fb3eafbcc61509af634b69411fa',1,'sen::lang::StlEnumStatement']]],
   ['structtemplate_23',['structTemplate',['../namespacesen_1_1gen_1_1detail.html#a0768568f965af70ec5e1576fe0396f7d',1,'sen::gen::detail::MkDocsTemplates::structTemplate'],['../namespacesen_1_1gen_1_1detail.html#ad20c641807414c0d4463851d4743bb41',1,'sen::gen::detail::TypeScriptTemplateSet::structTemplate']]],
@@ -30,5 +30,6 @@ var searchData=
   ['style_27',['style',['../namespacesen_1_1gen.html#a8496fc62b4d42d87da644d2b337e4563',1,'sen::gen::TypstOptions']]],
   ['styles_28',['styles',['../namespacesen_1_1gen_1_1detail.html#aefde87ca2ddf515b1204749637278a40',1,'sen::gen::detail::HtmlApp']]],
   ['summaries_29',['summaries',['../namespacesen_1_1gen.html#aef660266e5a5bfac39777fa66ab1fe4d',1,'sen::gen::TypstOptions']]],
-  ['summaryfilename_30',['summaryFileName',['../namespacesen_1_1db.html#a2bb63c85ecea8cb6e7b477d6042bab64',1,'sen::db']]]
+  ['summaryfilename_30',['summaryFileName',['../namespacesen_1_1db.html#a2bb63c85ecea8cb6e7b477d6042bab64',1,'sen::db']]],
+  ['supportedfileversion_31',['supportedFileVersion',['../namespacesen_1_1db.html#a549ab16df3a2db9298deef7845f215e7',1,'sen::db']]]
 ];
