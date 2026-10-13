@@ -217,6 +217,10 @@ class SenConan(ConanFile):
 
     def set_version(self):
         """Defines the version number that should be used."""
+        explicit_version = getenv("SEN_VERSION")
+        if explicit_version:
+            self.version = explicit_version
+            return
         # A worktree and a submodule have `.git` as a file naming the real git directory, which
         # git resolves on its own, so presence is the test and not directory-ness.
         if exists(join(self.recipe_folder, ".git")):

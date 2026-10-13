@@ -255,6 +255,15 @@ function(git_local_changes _var)
 endfunction()
 
 function(get_version_from_git version_output_variable)
+  if(DEFINED ENV{SEN_VERSION} AND NOT "$ENV{SEN_VERSION}" STREQUAL "")
+    string(REGEX REPLACE "-.*$" "" out "$ENV{SEN_VERSION}")
+    set(${version_output_variable}
+        ${out}
+        PARENT_SCOPE
+    )
+    return()
+  endif()
+
   find_package(Git QUIET)
 
   set(fallback_version "0.0.0")
@@ -319,6 +328,14 @@ function(get_version_from_git version_output_variable)
 endfunction()
 
 function(get_version_from_git_raw version_output_variable)
+  if(DEFINED ENV{SEN_VERSION} AND NOT "$ENV{SEN_VERSION}" STREQUAL "")
+    set(${version_output_variable}
+        "$ENV{SEN_VERSION}"
+        PARENT_SCOPE
+    )
+    return()
+  endif()
+
   find_package(Git QUIET)
 
   set(fallback_version "0.0.0")
