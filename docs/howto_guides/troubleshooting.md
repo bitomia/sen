@@ -16,7 +16,7 @@ Run through this before anything else:
 3. Did CMake run successfully and did `make` (or similar) complete without errors?
 4. Does your YAML config reference the correct class names (case-sensitive, `package.ClassName`)?
 5. Do all bus names in YAML exactly match what your code uses?
-6. Does every exported class have `SEN_EXPORT_CLASS(ClassName)` at the bottom of its `.cpp`?
+6. Does every implementation class have `SEN_EXPORT_CLASS(ClassName)` at the bottom of its `.cpp`?
 
 ---
 
@@ -76,6 +76,21 @@ add_sen_package(
         stl/my_package/my_class.stl   # ← must be listed here
 )
 ```
+---
+
+### Multiple definition of senMakeInstance
+
+**Symptom:** The package fails to link with `multiple definition of 'senMakeInstance0x<hash>'`,
+where `<hash>` is derived from the class's qualified name (`my_package.MyClass`).
+
+**Cause:** The implementation class has the same name as its STL class, and the STL class has no
+methods and no checked properties. Sen can instantiate such a class
+without an implementation, so it already registers it under that name, and `SEN_EXPORT_CLASS`
+tries to register your implementation under the same one.
+
+**Fix:** Rename the implementation class; `MyClassImpl` is the recommended convention. If the
+implementation adds no logic, you can instead remove it and its `SEN_EXPORT_CLASS`, and
+instantiate the STL class directly from `config.yaml`.
 
 ---
 

@@ -340,7 +340,9 @@ rest. Objects in remote processes behave identically to local objects from your 
    in a lower group than the things that depend on them. This page does not cover groups;
    [Using component groups](../howto_guides/using_groups.md) has the rules.
 
-5. **`SEN_EXPORT_CLASS` is mandatory**: without it the kernel cannot find your class, and stops at
-   startup with `could not find type '<package>.<Class>' in any of the imported libraries`, naming
-   the symbol it looked for. [Creating your first package](../getting_started/first_package.md)
-   shows where the macro goes.
+5. **`SEN_EXPORT_CLASS` is mandatory for every implementation class**: without it the kernel
+   cannot find your class, and stops at startup with `could not find type '<package>.<Class>' in
+   any of the imported libraries`, naming the symbol it looked for. An STL class with no methods
+   (including inherited ones) and no checked properties does not need an implementation class:
+   `config.yaml` can instantiate it directly under its STL name.
+   [Creating your first package](../getting_started/first_package.md) shows where the macro goes.
