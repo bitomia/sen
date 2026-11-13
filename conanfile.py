@@ -22,7 +22,7 @@ COMPONENTS = tuple(sorted(p.parent.name for p in (Path(__file__).parent / "compo
 
 # Components enabled by `mode=basic`. `mode=full` enables every COMPONENT;
 # `mode=barebones` enables none.
-_BASIC_COMPONENTS = frozenset({"shell", "term", "ether"})
+_BASIC_COMPONENTS = frozenset({"shell", "term", "ether", "logmaster", "jsonrpc"})
 
 
 class SenConan(ConanFile):
@@ -49,7 +49,7 @@ class SenConan(ConanFile):
     # Conan-level component selection is `mode` only - per-component would explode
     # package_id. CMake-level `-DSEN_BUILD_<COMP>=OFF` is the per-component override.
     options = {
-        "mode": ["barebones", "basic", "full"],  # barebones: no components, basic: shell + ether
+        "mode": ["barebones", "basic", "full"],  # barebones: no components, basic: shell + ether + logmaster
         "with_examples": [True, False],
         "with_tests": [True, False],
         "with_clang_tidy": [True, False],
@@ -241,6 +241,10 @@ class SenConan(ConanFile):
 
     def set_version(self):
         """Defines the version number that should be used."""
+        explicit_version = getenv("SEN_VERSION")
+        if explicit_version:
+            self.version = explicit_version
+            return
         # A worktree and a submodule have `.git` as a file naming the real git directory, which
         # git resolves on its own, so presence is the test and not directory-ness.
         if exists(join(self.recipe_folder, ".git")):
